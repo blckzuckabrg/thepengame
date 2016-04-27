@@ -1,6 +1,8 @@
 class AudioUploadsController < ApplicationController
   before_action :set_audio_upload, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  
   # GET /audio_uploads
   def index
     @audio_uploads = AudioUpload.all
@@ -12,7 +14,7 @@ class AudioUploadsController < ApplicationController
 
   # GET /audio_uploads/new
   def new
-    @audio_upload = AudioUpload.new
+    @audio_upload = current_user.audio_uploads.build
   end
 
   # GET /audio_uploads/1/edit
@@ -21,7 +23,7 @@ class AudioUploadsController < ApplicationController
 
   # POST /audio_uploads
   def create
-    @audio_upload = AudioUpload.new(audio_upload_params)
+    @audio_upload = current_user.audio_uploads.build(audio_upload_params)
       if @audio_upload.save
          redirect_to @audio_upload, notice: 'Audio upload was successfully created.'
       else
@@ -48,6 +50,11 @@ class AudioUploadsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_audio_upload
       @audio_upload = AudioUpload.find(params[:id])
+    end
+
+    def correct_user
+      @audio_upload = current_user.audio_uploads.find_by(id: params[:id])
+      redirect_to audio_uploads_path, notice: "Not authorized to edit this audio upload" if @audio_upload.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

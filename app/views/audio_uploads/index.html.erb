@@ -16,9 +16,12 @@
       <tr>
         <td><%= audio_upload.artist_name %></td>
         <td><%= audio_upload.track_name %></td>
+        <td><%= audio_upload.user.email if audio_upload.user %></td>
         <td><%= link_to 'Show', audio_upload %></td>
+        <% if audio_upload.user == current_user %>
         <td><%= link_to 'Edit', edit_audio_upload_path(audio_upload) %></td>
         <td><%= link_to 'Destroy', audio_upload, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +29,6 @@
 
 <br>
 
-<%= link_to 'New Audio upload', new_audio_upload_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Audio Upload', new_audio_upload_path %>
+<% end %>

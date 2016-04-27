@@ -1,2 +1,3 @@
 class AudioUpload < ActiveRecord::Base
+	belongs_to :user
 end
