@@ -1,7 +1,7 @@
 <div class="jumbotron center">
 	<h1>The Pengame</h1>
 	<% if user_signed_in? %>
-	# do something
+		<%= redierct_to audio_uploads_path %>
 	<% else %>
 
 		<%= link_to "Log In", new_user_session_path, class: "btn btn-default" %>
