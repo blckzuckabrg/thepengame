@@ -59,6 +59,6 @@ class AudioUploadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def audio_upload_params
-      params.require(:audio_upload).permit(:artist_name, :track_name)
+      params.require(:audio_upload).permit(:artist_name, :track_name, :image, :audio)
     end
 end

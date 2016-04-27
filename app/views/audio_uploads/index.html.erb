@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Image</th>
       <th>Artist Name</th>
       <th>Track Name</th>
       <th colspan="3"></th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @audio_uploads.each do |audio_upload| %>
       <tr>
+        <td><%= image_tag audio_upload.image.url(:medium) %></td>
         <td><%= audio_upload.artist_name %></td>
         <td><%= audio_upload.track_name %></td>
         <td><%= audio_upload.user.email if audio_upload.user %></td>

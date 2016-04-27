@@ -14,6 +14,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # Flexible authentication solution for Rails with Warden
 gem 'devise', '>= 4.0.1'
+# Easy upload management for ActiveRecord
+gem 'paperclip', '~> 4.3'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
