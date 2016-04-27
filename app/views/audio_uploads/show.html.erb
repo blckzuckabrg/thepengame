@@ -1,7 +1,5 @@
-<p id="notice"><%= notice %></p>
-
-<%= image_tag @audio_upload.image.url(:medium) %>
-
+<p><%= image_tag @audio_upload.image.url(:medium) %></p>
+<p><%= audio_tag @audio_upload.audio, :type => "audio/mp3", :controls => true, autoplay: true %></p>
 <p>
   <strong>Artist Name:</strong>
   <%= @audio_upload.artist_name %>
