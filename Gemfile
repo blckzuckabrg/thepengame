@@ -17,6 +17,9 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 
+# CoffeeScript is a little language that compiles into JavaScript
+gem 'coffee-script-source', '~> 1.8.0'
+
 # Flexible authentication solution for Rails with Warden
 gem 'devise', '>= 4.0.1'
 
@@ -27,14 +30,19 @@ gem 'paperclip', '~> 4.3'
 # interfaces and API clients for AWS services
 gem 'aws-sdk', '< 2.0'
 
+# Masonry is a JavaScript grid layout library. It works by placing 
+# elements in optimal position based on available vertical space,
+# sort of like a mason fitting stones in a wall.
+# You’ve probably seen it in use all over the Internet.
+gem 'masonry-rails', '~> 0.2.4'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
