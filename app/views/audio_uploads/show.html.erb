@@ -1,17 +1,35 @@
-<p><%= image_tag @audio_upload.image.url(:medium) %></p>
-<p><%= audio_tag @audio_upload.audio, :type => "audio/mp3", :controls => true, autoplay: true %></p>
-<p>
-  <strong>Artist Name:</strong>
-  <%= @audio_upload.artist_name %>
-</p>
-
-<p>
-  <strong>Track Name:</strong>
-  <%= @audio_upload.track_name %>
-</p>
-
-<% if @audio_upload.user == current_user %>
-	<%= link_to 'Edit', edit_audio_upload_path(@audio_upload) %> |
+<%= link_to  audio_uploads_path do %>
+  <span class="glyphicon glyphicon-hand-left"></span>
+  Back
 <% end %>
-<%= link_to 'Back', audio_uploads_path %>
 
+<div class="row">
+  <div class="col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading center">
+				<p><%= image_tag @audio_upload.image.url(:medium) %></p>
+				<p><b><span style="color:red">Published</span>: <%= @audio_upload.created_at %></b></p>
+				<p><%= audio_tag @audio_upload.audio, :type => "audio/mp3", :controls => true, autoplay: true %></p>
+			</div>
+
+			<div class="panel-body">
+				<p>
+				  <strong><span style="color:red">Artist Name</span>:</strong>
+				  <b><%= @audio_upload.artist_name %></b>
+				</p>
+
+				<p>
+				  <strong><span style="color:red">Track Name</span>:</strong>
+				  <b><%= @audio_upload.track_name %></b>
+				</p>
+
+				<% if @audio_upload.user == current_user %>
+				  <%= link_to edit_audio_upload_path(@audio_upload) do%>
+				    <span class="glyphicon glyphicon-edit"></span>
+				      Edit |
+				  <% end %> 
+				<% end %>
+			</div>
+   </div>
+  </div>
+</div>

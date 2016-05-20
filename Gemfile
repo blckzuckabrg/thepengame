@@ -42,8 +42,6 @@ gem 'masonry-rails', '~> 0.2.4'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-
-
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 

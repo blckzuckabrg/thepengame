@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   resources :audio_uploads
   devise_for :users
-  root 'pages#home'
+  root 'audio_uploads#index'
 
-  get 'about' => 'pages#about'
+  get 'about' => 'pages#about' # creates about_path
 
-  get 'contact' => 'pages#contact'
+  get 'contact' => 'pages#contact' # creates contact_path
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

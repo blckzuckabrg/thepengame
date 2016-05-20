@@ -1,21 +1,42 @@
+<%= render 'pages/home' unless user_signed_in? %>
+
 <div id="audio_uploads" class="transitions-enabled">
   <% @audio_uploads.each do |audio_upload| %>
     <div class="box panel panel-default">
-        <%= image_tag audio_upload.image.url(:medium) %>
-        <div class="panel-body">
-        <%= audio_upload.artist_name %>
-        <%= audio_upload.track_name %>
-        <%= audio_upload.user.email if audio_upload.user %>
-        <%= link_to 'Play', audio_upload_path(audio_upload) %>
-        <% if audio_upload.user == current_user %>
-          <%= link_to 'Edit', edit_audio_upload_path(audio_upload) %>
-          <%= link_to 'Destroy', audio_upload, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to image_tag(audio_upload.image.url(:medium)), audio_upload %>
+      <div class="panel-body">
+      <p>
+        <b><span style="color:red">User Name</span>: <% if audio_upload.user %><%= audio_upload.user.name %><% end %></b>
+      </p>
+      <p>
+        <b><span style="color:red">Published</span>: <%= audio_upload.created_at %></b>
+      </p>
+      <p>
+        <b><span style="color:red"><u>Artist</u></span>: <%= audio_upload.artist_name %></b>
+      </p>
+      <p>
+        <b><span style="color:red"><u>Title</u></span >: <%= audio_upload.track_name %></b>
+      </p>
+      <p><strong><%= audio_upload.user.name if audio_upload.user %></strong></p>
+      
+      <% if current_user && audio_upload.user == current_user %>
+   <div class="actions">
+     <%= link_to edit_audio_upload_path(audio_upload) do %>
+       <span class="glyphicon glyphicon-edit"></span>
+       Edit
+     <% end %>
+     <%= link_to audio_upload, method: :delete, data: { confirm: 'Are you sure?' } do %>
+       <span class="glyphicon glyphicon-trash"></span>
+       Delete
+     <% end %>
+          </div>
         <% end %>
+      
       </div>
     </div>
-  <% end %>
-</div>  
+<% end %>
+</div>
 
 
 
-
+  

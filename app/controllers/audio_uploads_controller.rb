@@ -5,7 +5,7 @@ class AudioUploadsController < ApplicationController
   
   # GET /audio_uploads
   def index
-    @audio_uploads = AudioUpload.all
+    @audio_uploads = AudioUpload.all.order("created_at DESC")
   end
 
   # GET /audio_uploads/1
